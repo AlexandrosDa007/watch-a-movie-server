@@ -62,13 +62,13 @@ export class ElectronService {
    */
   getMetadata(): Metadata {
     const userDataPath = this.getPath('appData');
-    const metadataPath = this.path.join(userDataPath, 'watch-a-movie-backend', 'configurations.json');
+    const metadataPath = this.path.join(userDataPath, 'watch-a-movie-server', 'configurations.json');
     try {
       const json = this.fs.readFileSync(metadataPath, 'utf-8');
       const metadata = JSON.parse(json);
       return metadata;
     } catch (error) {
-      console.error(error);
+      console.error('SKATA',error);
       this.fs.writeFileSync(metadataPath, JSON.stringify({}));
       return {} as Metadata;
     }
@@ -79,7 +79,7 @@ export class ElectronService {
    */
   saveMetadata(metadata: Metadata): boolean {
     const userDataPath = this.getPath('appData');
-    const metadataPath = this.path.join(userDataPath, 'watch-a-movie-backend', 'configurations.json');
+    const metadataPath = this.path.join(userDataPath, 'watch-a-movie-server', 'configurations.json');
     const json = JSON.stringify(metadata, undefined, 2);
     try {
       this.fs.writeFileSync(metadataPath, json);

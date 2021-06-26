@@ -8,7 +8,7 @@ import { Metadata } from "../models/metadata";
  */
 export function getMeta(): Metadata {
     const appPath = app.getPath('appData');
-    const filePath = path.join(appPath, 'watch-a-movie-backend', 'configurations.json');
+    const filePath = path.join(appPath, 'watch-a-movie-server', 'configurations.json');
 
     try {
         const json = readFileSync(filePath, 'utf-8');

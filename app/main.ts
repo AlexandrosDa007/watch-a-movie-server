@@ -6,7 +6,7 @@ import { MyServer } from './express';
 require('@electron/remote/main').initialize();
 
 const appPath = app.getPath('appData');
-const filePath = path.join(appPath, 'watch-a-movie-backend', 'configurations.json');
+const filePath = path.join(appPath, 'watch-a-movie-server', 'configurations.json');
 // Create the file if it does not exist
 try {
   fs.readFileSync(filePath, 'utf-8');
