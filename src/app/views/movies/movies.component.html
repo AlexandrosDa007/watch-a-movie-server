@@ -1,0 +1,33 @@
+<div class="movies-container">
+    <h2>MOVIES</h2>
+
+    <!-- <button routerLink="movie-info/create">Add movie</button> -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let movie of movies">
+                <td>{{movie.id}}</td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.duration}}</td>
+                <td>
+                    <div class="action-container">
+                        <button [routerLink]="'movie-info/'+movie.id" class="action-btn">Edit</button>
+                        <button (click)="deleteMovie(movie.id)" class="action-btn">Delete</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <div style="display: flex;width: 100%;">
+        <button routerLink="movie-info/create" class="add-new-btn">Add new</button>
+    </div>
+    <!-- <app-movie *ngFor="let movie of movies" [movie]="movie">
+    </app-movie> -->
+</div>

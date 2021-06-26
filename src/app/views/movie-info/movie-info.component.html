@@ -1,0 +1,22 @@
+<div class="movie-container">
+    <button class="back-btn" routerLink="/">Back</button>
+    <span>ID: {{movie.id}}</span>
+    <label for="title">Movie title</label>
+    <input name="title" type="text" [(ngModel)]="movie.title">
+
+    
+    <label for="duration">Movie duration (min)</label>
+    <input name="duration" type="number" [(ngModel)]="movie.duration">
+    
+    <label for="image">Select image file</label>
+    <input name="image" type="file" accept="image/*" (change)="changeFile($event, 'imagePath')">
+    <label for="video">Select video file</label>
+    <input name="video" type="file" accept="video/*" (change)="changeFile($event, 'videoPath')">
+    <label for="subs">Select subtitles (.vtt)</label>
+    <input name="subs" type="file" accept=".vtt" (change)="changeFile($event, 'subsPath')">
+
+
+    <span class="error">{{errorMessage}}</span>
+
+    <button class="create-btn" (click)="create()">Save</button>
+</div>
