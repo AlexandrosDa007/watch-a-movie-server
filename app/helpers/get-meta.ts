@@ -3,6 +3,9 @@ import { readFileSync, writeFileSync } from "fs-extra";
 import * as path from "path";
 import { Metadata } from "../models/metadata";
 
+/**
+ * Retrieves the metadata
+ */
 export function getMeta(): Metadata {
     const appPath = app.getPath('appData');
     const filePath = path.join(appPath, 'watch-a-movie-backend', 'configurations.json');

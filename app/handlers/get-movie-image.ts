@@ -2,6 +2,11 @@ import express from 'express';
 import { readFileSync } from 'fs';
 import { getMeta } from '../helpers/get-meta';
 
+/**
+ * Retrieve the movie image
+ * @param req Express request
+ * @param res Express response
+ */
 export function getMovieImage(req: express.Request, res: express.Response) {
     const id = req.params.id;
     const metadata = getMeta();

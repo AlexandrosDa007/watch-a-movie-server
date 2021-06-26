@@ -2,7 +2,11 @@ import express from 'express';
 import { createReadStream, statSync } from 'fs';
 import { getMeta } from '../helpers/get-meta';
 
-
+/**
+ * Returns chunks of video data for a movie
+ * @param req Express request
+ * @param res Express response
+ */
 export function getMovieVideo(req: express.Request, res: express.Response) {
     // Ensure there is a range given for the video
     const range = req.headers.range;

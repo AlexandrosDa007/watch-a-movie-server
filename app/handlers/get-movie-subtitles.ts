@@ -2,7 +2,11 @@ import express from 'express';
 import { readFileSync } from 'fs';
 import { getMeta } from '../helpers/get-meta';
 
-
+/**
+ * Retrieves the subtitle file for a movie
+ * @param req Express request
+ * @param res Express response
+ */
 export function getMovieSubtitles(req: express.Request, res: express.Response) {
     const id = req.params.id;
     const metadata = getMeta();

@@ -6,8 +6,9 @@ import { ipcRenderer, webFrame } from 'electron';
 import * as remote from '@electron/remote';
 import * as childProcess from 'child_process';
 import * as fs from 'fs';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { Movie } from '../models/movie';
+import { Metadata } from '../models/metadata';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class ElectronService {
   app: Electron.App;
   path: any;
 
-  metadata$ = new BehaviorSubject<{ movies: Record<string, Movie> }>(null);
+  metadata$ = new BehaviorSubject<Metadata>(null);
   get isElectron(): boolean {
     return !!(window && window.process && window.process.type);
   }
@@ -56,7 +57,10 @@ export class ElectronService {
     return this.app.getPath(path);
   }
 
-  getMetadata(): any {
+  /**
+   * Retrieves the metadata
+   */
+  getMetadata(): Metadata {
     const userDataPath = this.getPath('appData');
     const metadataPath = this.path.join(userDataPath, 'watch-a-movie-backend', 'configurations.json');
     try {
@@ -66,11 +70,14 @@ export class ElectronService {
     } catch (error) {
       console.error(error);
       this.fs.writeFileSync(metadataPath, JSON.stringify({}));
-      return {};
+      return {} as Metadata;
     }
   }
-
-  saveMetadata(metadata: any): boolean {
+  /**
+   * Updates the metadata
+   * @param metadata The new metadata
+   */
+  saveMetadata(metadata: Metadata): boolean {
     const userDataPath = this.getPath('appData');
     const metadataPath = this.path.join(userDataPath, 'watch-a-movie-backend', 'configurations.json');
     const json = JSON.stringify(metadata, undefined, 2);
@@ -83,8 +90,12 @@ export class ElectronService {
       return false;
     }
   }
-
-  updateMovie(movieId: string, movie: Movie): void {
+  /**
+   * Updates or deletes a movie
+   * @param movieId The movie ID
+   * @param movie The movie or null
+   */
+  updateMovie(movieId: string, movie: Movie | null): void {
     const metadata = this.metadata$.value;
     if (!metadata.movies) {
       metadata.movies = {};

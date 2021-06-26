@@ -1,5 +1,5 @@
 {
-  "name": "watch-a-movie-backend",
+  "name": "watch-a-movie-server",
   "version": "10.0.1",
   "main": "main.js",
   "private": true,

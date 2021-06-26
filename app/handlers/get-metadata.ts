@@ -5,6 +5,11 @@ import { getMeta } from '../helpers/get-meta';
 import { Metadata } from '../models/metadata';
 import { PublicMetadata } from '../models/public-metadata';
 
+/**
+ * Returns metadata but with some properties removed
+ * @param req Express request
+ * @param res Express response
+ */
 export function getMetadata(req: express.Request, res: express.Response) {
     const metadata: Metadata = getMeta();
     const publicMetadata: PublicMetadata = {

@@ -30,26 +30,3 @@ export class MyServer {
     }
 
 }
-
-// const server = express().listen('3100');
-// server.listening
-
-// export function startServer(): void {
-//     expressApp.use(cors());
-//     expressApp.use(express.static('public'));
-
-
-//     expressApp.get('/movies/video/:id', getMovieVideo);
-
-//     expressApp.get('/movies/subtitles/:id', getMovieSubtitles);
-
-//     expressApp.get('/movies/image/:id', getMovieImage);
-
-
-//     export function closeServer(): void {
-//         server.close();
-//     }
-
-//     export function restartServer(): void {
-
-//     }

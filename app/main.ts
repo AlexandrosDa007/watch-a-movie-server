@@ -7,6 +7,7 @@ require('@electron/remote/main').initialize();
 
 const appPath = app.getPath('appData');
 const filePath = path.join(appPath, 'watch-a-movie-backend', 'configurations.json');
+// Create the file if it does not exist
 try {
   fs.readFileSync(filePath, 'utf-8');
 } catch (error) {
